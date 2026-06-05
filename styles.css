@@ -156,6 +156,7 @@ section { padding: var(--section-padding) 0; position: relative; }
 .about-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: clamp(40px, 6vw, 80px); align-items: center; }
 .about-image-wrapper { position: relative; }
 .about-image-frame { aspect-ratio: 3/4; border-radius: var(--radius-xl); overflow: hidden; border: 1px solid var(--border); background: var(--bg-card); }
+.about-image { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
 .about-image-placeholder { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; color: var(--text-muted); font-size: 0.9rem; background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary)); }
 .about-image-accent { position: absolute; top: -20px; right: -20px; width: 120px; height: 120px; border-radius: 50%; background: var(--accent-glow); filter: blur(40px); z-index: -1; }
 .about-text-col h2 { margin-bottom: 24px; }
@@ -612,4 +613,146 @@ section { padding: var(--section-padding) 0; position: relative; }
   /* Larger touch targets */
   .btn { min-height: 48px; }
   .contact-link { min-height: 56px; }
+}
+
+/* ============================================================
+   MEDIA FEATURED VIDEO
+   ============================================================ */
+.media-featured {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: clamp(24px, 4vw, 48px);
+  align-items: center;
+  margin-bottom: clamp(40px, 6vw, 64px);
+  padding: clamp(20px, 3vw, 32px);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  transition: border-color var(--transition-base);
+}
+.media-featured:hover {
+  border-color: var(--border-accent);
+}
+.media-video-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 */
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--bg-secondary);
+}
+.media-video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.media-featured-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.media-featured-info h3 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+.media-featured-info p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Media Card Link (Spotify) */
+.media-card-link {
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color var(--transition-base), transform var(--transition-base), box-shadow var(--transition-base);
+}
+.media-card-link:hover {
+  border-color: var(--border-accent);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-glow);
+}
+
+/* ============================================================
+   LIFE / PERSONAL SECTION
+   ============================================================ */
+.life {
+  padding: var(--section-padding) 0;
+  background: var(--bg-secondary);
+}
+.life-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  gap: clamp(12px, 2vw, 24px);
+}
+.life-card {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  cursor: default;
+}
+.life-card--large {
+  grid-column: 1;
+  grid-row: 1 / 4;
+}
+.life-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s var(--ease-out);
+}
+.life-card:hover img {
+  transform: scale(1.05);
+}
+.life-card-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: clamp(16px, 3vw, 28px);
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.75));
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity var(--transition-base), transform var(--transition-base);
+}
+.life-card:hover .life-card-overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+.life-card-overlay span {
+  font-family: var(--font-heading);
+  font-size: clamp(0.85rem, 1.2vw, 1.05rem);
+  font-weight: 500;
+  color: #fff;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Responsive: Featured Video */
+@media (max-width: 768px) {
+  .media-featured {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 16px;
+  }
+  .life-gallery {
+    grid-template-columns: 1fr;
+  }
+  .life-card--large {
+    grid-column: 1;
+    grid-row: auto;
+    aspect-ratio: 4/3;
+  }
+  .life-card-overlay {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

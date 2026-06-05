@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=2">
 
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -151,13 +151,7 @@
           <div class="about-image-col">
             <div class="about-image-wrapper">
               <div class="about-image-frame">
-                <div class="about-image-placeholder">
-                  <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" opacity="0.3">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                    <circle cx="12" cy="7" r="4"/>
-                  </svg>
-                  <span>Perry Nelson</span>
-                </div>
+                <img src="images/profile-headshot.jpg" alt="Perry Nelson — Site Lead, Google Ghana" class="about-image" loading="lazy">
               </div>
               <div class="about-image-accent" aria-hidden="true"></div>
             </div>
@@ -507,7 +501,7 @@
     <!-- ========== PHILANTHROPY ========== -->
     <section class="philanthropy" id="philanthropy">
       <div class="philanthropy-bg">
-        <img src="computer-lab.jpg" alt="Students at the Emmanuel Nii Azuma Nelson Computer Lab at Liberty No. 2 High School, Adabraka, Accra" class="philanthropy-bg-img" loading="lazy">
+        <img src="images/computer-lab.jpg" alt="Students at the Emmanuel Nii Azuma Nelson Computer Lab at Liberty No. 2 High School, Adabraka, Accra" class="philanthropy-bg-img" loading="lazy">
         <div class="philanthropy-overlay"></div>
       </div>
       <div class="container">
@@ -542,16 +536,32 @@
           <p>Speaking about AI, technology, and Africa's role in shaping the future.</p>
         </div>
 
-        <div class="media-grid">
-          <div class="media-card reveal">
+        <!-- Featured Video -->
+        <div class="media-featured reveal">
+          <div class="media-video-wrapper">
+            <iframe src="https://www.youtube.com/embed/epzxyL7T-70" title="How Google is working with AI in Africa — Perry Nelson" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <div class="media-featured-info">
             <div class="media-card-type">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              Featured Video
+            </div>
+            <h3>How Google is Working with AI in Africa</h3>
+            <p class="media-venue">YouTube · Google</p>
+            <p>Exploring how Google's research team in Accra is applying AI to address critical challenges across the continent — from flood forecasting and food security to maternal health innovations.</p>
+          </div>
+        </div>
+
+        <div class="media-grid">
+          <a href="https://open.spotify.com/show/voices-of-a-continent" target="_blank" class="media-card media-card-link reveal">
+            <div class="media-card-type">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
               Podcast
             </div>
             <h3>The AI Revolution in Africa: Why Ghana is Leading the Way</h3>
             <p class="media-venue">Voices of a Continent · March 2026</p>
-            <p>Discussed how AI is being applied to solve real-world challenges in Africa, from weather forecasting for cocoa farmers to AI-powered maternal health solutions.</p>
-          </div>
+            <p>Exploring AI for local impact, Project Wahaal (WaxalNLP), the democratization of tech tools like NotebookLM and Gemini Nano, and why Ghana is at the forefront of global AI innovation.</p>
+          </a>
 
           <div class="media-card reveal">
             <div class="media-card-type">
@@ -566,11 +576,11 @@
           <div class="media-card reveal">
             <div class="media-card-type">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-              Panel
+              Partnership
             </div>
-            <h3>Diversity in AI: Building Inclusive Technology</h3>
-            <p class="media-venue">Google AI Center, Accra · 2025</p>
-            <p>Panel discussion on ensuring diverse representation in AI development, and how African perspectives are essential to building truly global AI systems.</p>
+            <h3>AI Listening Tours & Roundtables with AmCham Ghana</h3>
+            <p class="media-venue">American Chamber of Commerce Ghana · 2024–2026</p>
+            <p>Hosted AI listening tours, roundtable discussions, and networking events for AmCham Ghana members — demonstrating Gemini for Work, NotebookLM, and ethical AI application for business competitiveness.</p>
           </div>
 
           <div class="media-card reveal">
@@ -585,22 +595,60 @@
 
           <div class="media-card reveal">
             <div class="media-card-type">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-              Conference
-            </div>
-            <h3>Technology & Innovation in Ghana</h3>
-            <p class="media-venue">AmCham Ghana · Various</p>
-            <p>Regular speaker and participant at the American Chamber of Commerce Ghana events, discussing the intersection of technology, business, and innovation in West Africa.</p>
-          </div>
-
-          <div class="media-card reveal">
-            <div class="media-card-type">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
               Initiative
             </div>
             <h3>Accra AI Community Center</h3>
             <p class="media-venue">Google Ghana · Ongoing</p>
             <p>Leading programs at the AICC that train young Africans in AI development — from FlutterFlow workshops to digital banking tools and athlete performance tracking applications.</p>
+          </div>
+
+          <div class="media-card reveal">
+            <div class="media-card-type">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              Panel
+            </div>
+            <h3>Diversity in AI: Building Inclusive Technology</h3>
+            <p class="media-venue">Google AI Center, Accra · 2025</p>
+            <p>Panel discussion on ensuring diverse representation in AI development, and how African perspectives are essential to building truly global AI systems.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== LIFE / PERSONAL ========== -->
+    <section class="life" id="life">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">Beyond Work</span>
+          <h2>Life, Family &<br><span class="text-gradient">Community</span></h2>
+          <p>The moments that ground me and remind me why the work matters.</p>
+        </div>
+
+        <div class="life-gallery reveal">
+          <div class="life-card life-card--large">
+            <img src="images/family-portrait.jpg" alt="Perry with his wife and daughter" loading="lazy">
+            <div class="life-card-overlay">
+              <span>Family First — The reason I build</span>
+            </div>
+          </div>
+          <div class="life-card">
+            <img src="images/google-ghana-office.jpg" alt="Perry with American Chamber of Commerce Ghana delegation at Google Ghana office" loading="lazy">
+            <div class="life-card-overlay">
+              <span>Hosting AmCham Ghana at Google</span>
+            </div>
+          </div>
+          <div class="life-card">
+            <img src="images/family-newborn.jpg" alt="Perry and his wife with their newborn baby" loading="lazy">
+            <div class="life-card-overlay">
+              <span>The most beautiful code I've ever written</span>
+            </div>
+          </div>
+          <div class="life-card">
+            <img src="images/google-breast-cancer.jpg" alt="Perry at Google Breast Cancer Awareness event" loading="lazy">
+            <div class="life-card-overlay">
+              <span>Google — Early detection saves lives</span>
+            </div>
           </div>
         </div>
       </div>
