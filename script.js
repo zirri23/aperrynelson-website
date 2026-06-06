@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }, {
     threshold: 0.15,
-    rootMargin: '0px 0px -50px 0px'
+    rootMargin: '0px 0px -40px 0px'
   });
 
   revealElements.forEach(el => revealObserver.observe(el));
@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     const target = parseInt(el.getAttribute('data-count'), 10);
     const suffix = el.getAttribute('data-suffix') || '';
-    const duration = 2000;
+    const duration = 1800;
     const startTime = performance.now();
 
     function easeOutQuart(t) {
@@ -138,64 +138,6 @@ document.addEventListener('DOMContentLoaded', () => {
     requestAnimationFrame(update);
   }
 
-  // ========== TYPEWRITER EFFECT ==========
-  const typewriterEl = document.getElementById('typewriter-text');
-  if (typewriterEl) {
-    const phrases = [
-      'Technology Leader',
-      'AI Researcher',
-      'Entrepreneur',
-      'Builder',
-      'Father'
-    ];
-    
-    let phraseIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    let isPaused = false;
-
-    function typewrite() {
-      const currentPhrase = phrases[phraseIndex];
-
-      if (isPaused) {
-        isPaused = false;
-        isDeleting = true;
-        setTimeout(typewrite, 1200);
-        return;
-      }
-
-      if (!isDeleting) {
-        // Typing
-        charIndex++;
-        typewriterEl.textContent = currentPhrase.substring(0, charIndex);
-
-        if (charIndex === currentPhrase.length) {
-          isPaused = true;
-          setTimeout(typewrite, 2000);
-          return;
-        }
-
-        setTimeout(typewrite, 80 + Math.random() * 40);
-      } else {
-        // Deleting
-        charIndex--;
-        typewriterEl.textContent = currentPhrase.substring(0, charIndex);
-
-        if (charIndex === 0) {
-          isDeleting = false;
-          phraseIndex = (phraseIndex + 1) % phrases.length;
-          setTimeout(typewrite, 500);
-          return;
-        }
-
-        setTimeout(typewrite, 40);
-      }
-    }
-
-    // Start after a brief delay
-    setTimeout(typewrite, 1000);
-  }
-
   // ========== TIMELINE LINE ANIMATION ==========
   const timelineFill = document.querySelector('.timeline-line-fill');
   const timelineSection = document.querySelector('.journey');
@@ -206,7 +148,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const sectionHeight = rect.height;
       const viewportHeight = window.innerHeight;
       
-      // Calculate how far we've scrolled through the section
       const scrolledPast = viewportHeight - rect.top;
       const totalDistance = sectionHeight + viewportHeight;
       const progress = Math.max(0, Math.min(1, scrolledPast / totalDistance));
@@ -217,62 +158,6 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', updateTimelineFill, { passive: true });
     updateTimelineFill();
   }
-
-  // ========== VENTURE CARD GLOW ==========
-  document.querySelectorAll('.venture-card').forEach(card => {
-    const glow = card.querySelector('.venture-card-glow');
-    if (!glow) return;
-
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      
-      glow.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(16, 185, 129, 0.12) 0%, transparent 50%)`;
-    });
-
-    card.addEventListener('mouseenter', () => {
-      glow.style.opacity = '1';
-    });
-
-    card.addEventListener('mouseleave', () => {
-      glow.style.opacity = '0';
-    });
-  });
-
-  // ========== PARALLAX ON HERO ==========
-  const hero = document.querySelector('.hero');
-  if (hero) {
-    document.addEventListener('mousemove', (e) => {
-      if (window.innerWidth < 768) return;
-      
-      const glows = document.querySelectorAll('.bg-glow');
-      const x = (e.clientX / window.innerWidth - 0.5) * 2;
-      const y = (e.clientY / window.innerHeight - 0.5) * 2;
-
-      glows.forEach((glow, i) => {
-        const factor = (i + 1) * 8;
-        glow.style.transform = `translate(${x * factor}px, ${y * factor}px)`;
-      });
-    });
-  }
-
-  // ========== PHILOSOPHY CARD TILT ==========
-  document.querySelectorAll('.philosophy-card').forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-      if (window.innerWidth < 768) return;
-      
-      const rect = card.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width - 0.5;
-      const y = (e.clientY - rect.top) / rect.height - 0.5;
-      
-      card.style.transform = `translateY(-4px) perspective(800px) rotateX(${-y * 5}deg) rotateY(${x * 5}deg)`;
-    });
-
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = '';
-    });
-  });
 
   // ========== STAGGER REVEAL FOR GRIDS ==========
   const gridContainers = document.querySelectorAll('.ventures-grid, .media-grid');
