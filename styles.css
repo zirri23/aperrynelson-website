@@ -25,7 +25,7 @@
   --border: rgba(255, 255, 255, 0.07);
   --border-accent: rgba(212, 168, 83, 0.25);
 
-  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-heading: 'DM Sans', 'Inter', sans-serif;
   --font-body: 'Inter', sans-serif;
 
   --section-padding: clamp(80px, 10vw, 140px);
@@ -153,7 +153,6 @@ section { padding: var(--section-padding) 0; position: relative; }
 .philosophy-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: clamp(60px, 8vw, 100px); }
 .philosophy-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: clamp(24px, 3vw, 36px); transition: all var(--transition-base); }
 .philosophy-card:hover { border-color: var(--border-accent); }
-.philosophy-icon { width: 56px; height: 56px; border-radius: var(--radius-md); background: rgba(255, 255, 255, 0.04); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; color: var(--accent); }
 .philosophy-card h4 { margin-bottom: 12px; color: var(--text-primary); }
 .philosophy-card p { font-size: 0.95rem; }
 
@@ -195,7 +194,6 @@ section { padding: var(--section-padding) 0; position: relative; }
 .research-card--main { border-color: var(--border-accent); }
 
 .research-card-badge { display: inline-flex; padding: 6px 14px; background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 6px; font-family: var(--font-body); font-size: 0.7rem; font-weight: 600; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 20px; }
-.research-card-icon { width: 64px; height: 64px; border-radius: var(--radius-md); background: rgba(255,255,255,0.04); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; margin-bottom: 24px; color: var(--accent); }
 .research-card h3 { margin-bottom: 16px; }
 .research-card p { margin-bottom: 24px; }
 
@@ -239,11 +237,12 @@ section { padding: var(--section-padding) 0; position: relative; }
 .philanthropy-content h2 { margin-bottom: 24px; font-size: clamp(1.8rem, 3.5vw, 2.8rem); }
 .philanthropy-quote { margin-bottom: 24px; }
 .philanthropy-quote blockquote { font-family: var(--font-heading); font-size: clamp(1.2rem, 2vw, 1.6rem); font-weight: 500; font-style: italic; color: var(--accent-light); line-height: 1.5; padding-left: 24px; border-left: 2px solid var(--accent); }
+.philanthropy-attribution { display: block; font-size: 0.9rem; color: var(--text-muted); margin-top: 8px; padding-left: 24px; font-style: normal; }
 .philanthropy-content > p { margin-bottom: 16px; font-size: 1.05rem; }
 
 .philanthropy-details { display: flex; flex-direction: column; gap: 12px; margin-top: 28px; }
 .philanthropy-detail { display: flex; align-items: center; gap: 12px; font-size: 0.95rem; color: var(--text-secondary); }
-.philanthropy-detail svg { color: var(--accent); flex-shrink: 0; }
+.philanthropy-detail span::before { content: '\2022'; margin-right: 4px; color: var(--accent); }
 
 /* ============================================================
    MEDIA / PRESS
@@ -403,7 +402,7 @@ section { padding: var(--section-padding) 0; position: relative; }
 
   .philosophy-cards { grid-template-columns: 1fr; gap: 16px; }
   .philosophy-card { padding: 24px; }
-  .philosophy-icon { width: 48px; height: 48px; margin-bottom: 16px; }
+
 
   .timeline { padding: 20px 0; }
   .timeline-line { left: 20px; }
@@ -419,9 +418,7 @@ section { padding: var(--section-padding) 0; position: relative; }
 
   .research-grid { grid-template-columns: 1fr; gap: 20px; }
   .research-card { padding: 24px; }
-  .research-card-icon { width: 52px; height: 52px; margin-bottom: 20px; }
-  .research-card-icon svg { width: 36px; height: 36px; }
-  .research-stats { flex-direction: row; gap: 20px; flex-wrap: wrap; }
+
   .research-links { flex-direction: column; gap: 10px; }
 
   .ventures-grid { grid-template-columns: 1fr; gap: 16px; }
@@ -547,4 +544,66 @@ section { padding: var(--section-padding) 0; position: relative; }
   .media-card:active,
   .contact-link:active { border-color: var(--border-accent); background: var(--bg-card-hover); }
   .contact-link { min-height: 48px; }
+}
+
+/* ============================================================
+   SUBTLE ANIMATIONS
+   ============================================================ */
+@keyframes gentle-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.hero-photo img {
+  animation: gentle-float 6s ease-in-out infinite;
+}
+
+.timeline-dot {
+  transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
+}
+.timeline-item:hover .timeline-dot {
+  transform: scale(1.4);
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+
+.philosophy-card {
+  transition: transform 0.4s var(--ease-out), border-color 0.4s var(--ease-out);
+}
+.philosophy-card:hover {
+  transform: translateY(-4px);
+}
+
+.venture-card {
+  transition: transform 0.4s var(--ease-out), border-color 0.4s var(--ease-out);
+}
+.venture-card:hover {
+  transform: translateY(-4px);
+}
+
+.media-card {
+  transition: transform 0.4s var(--ease-out), border-color 0.4s var(--ease-out);
+}
+.media-card:hover {
+  transform: translateY(-3px);
+}
+
+.btn-primary {
+  transition: background 0.3s var(--ease-out), transform 0.2s var(--ease-out);
+}
+.btn-primary:hover {
+  transform: translateY(-1px);
+}
+
+.contact-link {
+  transition: border-color 0.3s var(--ease-out), transform 0.3s var(--ease-out), background 0.3s var(--ease-out);
+}
+.contact-link:hover {
+  transform: translateX(4px);
+}
+
+.life-card {
+  transition: transform 0.5s var(--ease-out);
+}
+.life-card:hover {
+  transform: scale(1.02);
 }
