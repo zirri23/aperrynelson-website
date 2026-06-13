@@ -92,6 +92,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
   revealElements.forEach(el => revealObserver.observe(el));
 
+  // ========== IMAGE REVEAL ANIMATIONS ==========
+  const imgRevealElements = document.querySelectorAll('.img-reveal, .img-reveal-up, .img-reveal-left, .img-reveal-right');
+  
+  const imgRevealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        imgRevealObserver.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.2,
+    rootMargin: '0px 0px -60px 0px'
+  });
+
+  imgRevealElements.forEach(el => imgRevealObserver.observe(el));
+
+  // ========== LIFE GALLERY STAGGERED REVEAL ==========
+  const lifeCards = document.querySelectorAll('.life-card');
+  const lifeGallery = document.querySelector('.life-gallery');
+
+  if (lifeGallery && lifeCards.length) {
+    const lifeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          lifeCards.forEach((card, index) => {
+            setTimeout(() => {
+              card.classList.add('revealed');
+            }, index * 150);
+          });
+          lifeObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    lifeObserver.observe(lifeGallery);
+  }
+
   // Also observe stat counters that aren't inside .reveal elements
   const standaloneCounters = document.querySelectorAll('.stat-counter');
   const counterObserver = new IntersectionObserver((entries) => {
